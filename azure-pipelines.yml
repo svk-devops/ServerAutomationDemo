@@ -15,11 +15,11 @@ variables:
   - name: azure_resource_group_name
     value: "ServerProvisionTesting-$(Build.BuildId)"
   - name: subscription_id
-    value: "XXXXXXXXXXXXXXXXXXXXXXXXXX"
+    value: "c80eb516-ac45-4df1-ae1f-c8c17bf10a72"
   - name: application_id
-    value: "XXXXXXXXXXXXXXXXXXXXXXXXXX"
+    value: "0d5cc907-cea4-4f40-826b-12d93d55d572"
   - name: tenant_id
-    value: "XXXXXXXXXXXXXXXXXXXXXXXXXX"
+    value: "6726ea9f-344c-4609-9af9-35e8d9d1663f"
 
 steps:
   - task: PowerShell@2
@@ -55,10 +55,10 @@ steps:
       resultsFile: "$(System.DefaultWorkingDirectory)/server.infrastructure.tests.XML"
       usePSCore: true
       run32Bit: False
-  - task: PowerShell@2
-    inputs:
-      targetType: "inline"
-      script: Get-AzResourceGroup -Name $(azure_resource_group_name) | Remove-AzResourceGroup -Force
+  # - task: PowerShell@2
+  #   inputs:
+  #     targetType: "inline"
+  #     script: Get-AzResourceGroup -Name $(azure_resource_group_name) | Remove-AzResourceGroup -Force
   - task: PublishTestResults@2
     inputs:
       testResultsFormat: "NUnit"

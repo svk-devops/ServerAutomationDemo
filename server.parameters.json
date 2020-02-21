@@ -14,7 +14,7 @@
             }
         },
         "vmName": {
-            "value": "TESTVMDEPLOY"
+            "value": "tst-ub1-vm"
         }
     }
 }
