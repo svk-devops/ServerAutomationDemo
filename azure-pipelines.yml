@@ -43,7 +43,7 @@ steps:
       subscriptionId: "$(subscription_id)"
       action: "Create Or Update Resource Group"
       resourceGroupName: $(azure_resource_group_name)
-      location: "East US"
+      location: "West Europe"
       templateLocation: "Linked artifact"
       csmFile: "server.json"
       csmParametersFile: "server.parameters.json"
