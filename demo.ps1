@@ -1,14 +1,13 @@
 #region Var setup
 $resourceGroupName = 'ServerAutomationDemo'
-$region = 'XXXXXXX'
-$localVMAdminPw = 'I like azure.' ## a single password for demo purposes
+$region = 'West Europe'
+$localVMAdminPw = '!user-2010' ## a single password for demo purposes
 $projectName = 'ServerAutomationDemo' ## common term used through set up
-
-$subscriptionName = 'XXXXXXXXXX'
-$subscriptionId = 'XXXXXXXX'
-$tenantId = 'XXXXXXX'
-$orgName = 'adbertram'
-$gitHubRepoUrl = "https://github.com/$orgName/<repo name>"
+$subscriptionName = 'SVK Dev/Test'
+$subscriptionId = 'c80eb516-ac45-4df1-ae1f-c8c17bf10a72'
+$tenantId = '6726ea9f-344c-4609-9af9-35e8d9d1663f'
+$orgName = 'SVK-Azure-DevOps'
+$gitHubRepoUrl = "https://github.com/svk-devops/ServerAutomationDemo"
 
 #endregion
 
@@ -26,15 +25,22 @@ az group create --location $region --name $resourceGroupName
 #endregion
 
 #region Create the service principal
-$spIdUri = "http://$projectName"
+$projectName = 'ServerAutomationDemo'
+$spIdUri = "https://$projectName"
 $sp = az ad sp create-for-rbac --name $spIdUri | ConvertFrom-Json
+$sp
+appId       : 0d5cc907-cea4-4f40-826b-12d93d55d572
+displayName : ServerAutomationDemo
+name        : https://ServerAutomationDemo
+password    : 210fc320-ddb1-4276-b24e-019906bdc88d
+tenant      : 6726ea9f-344c-4609-9af9-35e8d9d1663f
 #endregion
 
 #region Key vault
 
 ## Create the key vault. Enabling for template deployment because we'll be using it during an ARM deployment
 ## via an Azure DevOps pipeline later
-$kvName = "$projectName-KV"
+$kvName = "$projectNameSKV"
 $keyVault = az keyvault create --location $region --name $kvName --resource-group $resourceGroupName --enabled-for-template-deployment true | ConvertFrom-Json
 
 # ## Create the key vault secrets

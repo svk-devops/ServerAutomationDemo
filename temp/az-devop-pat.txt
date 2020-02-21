@@ -1,0 +1,8 @@
+github
+24247a4bec24e530d5d827bf823c9aff36b8a9e1
+
+
+az devops
+naeldp4wh5gupjrdylxm6b4ajdev4w2hgdghzdy5qndbbwszvyqa
+
+$env:AZURE_DEVOPS_EXT_PAT = 'naeldp4wh5gupjrdylxm6b4ajdev4w2hgdghzdy5qndbbwszvyqa'
