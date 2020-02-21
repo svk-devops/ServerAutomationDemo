@@ -29,7 +29,7 @@ steps:
   - task: PowerShell@2
     inputs:
       targetType: "inline"
-      script: New-AzResourceGroup -Name $(azure_resource_group_name) -Location eastus -Force
+      script: New-AzResourceGroup -Name $(azure_resource_group_name) -Location westeurope -Force
   - task: Pester@0
     inputs:
       scriptFolder: "@{Path='$(System.DefaultWorkingDirectory)/server.template.tests.ps1'; Parameters=@{ResourceGroupName='$(azure_resource_group_name)'}}"
